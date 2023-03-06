@@ -1,0 +1,13 @@
+[package]
+name = "ewmh-status-listener"
+description = "Simple EWMH status listener that continuously gives json output of the current desktop state of an EWMH compatible window manager"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+xcb = "1"
+xcb-wm = {version = "0.4.0", features = ["ewmh"]}
+serde = {version = "1", features = ["derive"]}
+serde_json = "1"
