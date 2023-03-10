@@ -137,8 +137,7 @@ dependencies = [
 [[package]]
 name = "xcb-wm"
 version = "0.4.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "151d80a83742235d439cfe429fa1cf9e0fb87c272d1efb1968d1996c5f28c76d"
+source = "git+https://github.com/Philipp-M/xcb-wm?rev=830eea88b6aa5d37a7cf987ab65938272f71f902#830eea88b6aa5d37a7cf987ab65938272f71f902"
 dependencies = [
  "bitflags",
  "paste",

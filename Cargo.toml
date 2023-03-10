@@ -8,6 +8,6 @@ edition = "2021"
 
 [dependencies]
 xcb = "1"
-xcb-wm = {version = "0.4.0", features = ["ewmh"]}
-serde = {version = "1", features = ["derive"]}
+xcb-wm = { git = "https://github.com/Philipp-M/xcb-wm", rev = "830eea88b6aa5d37a7cf987ab65938272f71f902", features = ["ewmh"] }
+serde = { version = "1", features = ["derive"] }
 serde_json = "1"

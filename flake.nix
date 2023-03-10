@@ -16,18 +16,17 @@
 
       mtime = self.lastModifiedDate;
       date = "${substring 0 4 mtime}-${substring 4 2 mtime}-${substring 6 2 mtime}";
-      rev = self.rev or (throw "Git changes are not committed");
 
       mkEwmhStatusListener = { rustPlatform, xorg, ... }:
         rustPlatform.buildRustPackage {
           pname = "ewmh-status-listener";
           version = "unstable-${date}";
           src = self;
-          cargoLock.lockFile = self + "/Cargo.lock";
-
+          cargoLock = {
+            lockFile = self + "/Cargo.lock";
+            outputHashes."xcb-wm-0.4.0" = "sha256-d6XbUkISDEBeKqHs9UjaD39/7sToKm3JmKB6XIl4wMs=";
+          };
           buildInputs = [ xorg.libxcb ];
-
-          CFG_RELEASE = "git-${rev}";
         };
     in
     flake-utils.lib.eachDefaultSystem
