@@ -114,8 +114,7 @@ fn print_state(conn: &ewmh::Connection) -> xcb::Result<()> {
     Ok(())
 }
 
-fn main() -> xcb::Result<()> {
-    // TODO just loop/timeout/wait if an error occurs?
+fn main_loop() -> xcb::Result<()> {
     let (conn, _screen) = xcb::Connection::connect(None)?;
     let ewmh_con = ewmh::Connection::connect(&conn);
 
@@ -149,6 +148,20 @@ fn main() -> xcb::Result<()> {
             || atom == ewmh_con.atoms._NET_SHOWING_DESKTOP
         {
             print_state(&ewmh_con)?;
+        }
+    }
+}
+
+fn main() {
+    let mut fail_count = 0;
+
+    loop {
+        if fail_count > 0 {
+            std::thread::sleep(std::time::Duration::from_secs(1));
+        }
+        if let Err(err) = main_loop() {
+            fail_count += 1;
+            eprintln!("Failed {fail_count} times, Error: {err}");
         }
     }
 }

@@ -78,7 +78,7 @@ ewmh-status-listener
 It can be used e.g. like this in a workspaces widget in eww:
 
 ```yuck
-(deflisten ewmh-state "ewmh-status-listener")
+(deflisten ewmh-state "ewmh-status-listener 2> /tmp/ewmh-state-listener.log")
 (defwidget workspaces-ewmh []
   (eventbox
     :onscroll "echo '(${ewmh-state.current_desktop_id}{}+${arraylength(ewmh-state.desktops)})%${arraylength(ewmh-state.desktops)}' | sed -e \"s/up/+1/g\" -e \"s/down/-1/g\" | bc | xargs wmctrl -s"

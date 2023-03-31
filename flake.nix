@@ -24,7 +24,8 @@
           src = self;
           cargoLock = {
             lockFile = self + "/Cargo.lock";
-            outputHashes."xcb-wm-0.4.0" = "sha256-d6XbUkISDEBeKqHs9UjaD39/7sToKm3JmKB6XIl4wMs=";
+            outputHashes."xcb-wm-0.4.0" = "sha256-KJtf7Ilyqg2aWYeSSXqThiHM5CupfsFsf4zhfMSEaBY=";
+            outputHashes."xcb-1.2.0" = "sha256-mjaFSH3/AmtXJUhNzpmwDoQgcqGvOpz28eSzkZkqrKU=";
           };
           buildInputs = [ xorg.libxcb ];
         };
