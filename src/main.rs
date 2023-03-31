@@ -60,7 +60,9 @@ fn state(conn: &ewmh::Connection) -> xcb::Result<State> {
         if active_xcb_window == client {
             active_window = Some(window.clone());
         }
-        desktops[window.desktop_id as usize].windows.push(window);
+        if (window.desktop_id as usize) < desktops.len() {
+            desktops[window.desktop_id as usize].windows.push(window);
+        }
     }
 
     let current_desktop_id = conn.wait_for_reply(conn.send_request(&GetCurrentDesktop))?.desktop;
